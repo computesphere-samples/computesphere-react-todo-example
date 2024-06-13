@@ -1,30 +1,88 @@
-# React + TypeScript + Vite
+<p align="right">
+    <img src="src/assets/logo.svg" width="50px" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ComputeSphere React Example
 
-Currently, two official plugins are available:
+This example deploys a React Todo application to ComputeSphere.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> [!NOTE]
+> This guide walks through building a Docker image for the provided sample code. Please note that the version `v0.0.1` used in the example is for demonstration purposes only. You should replace it with a version that suits your specific setup and requirements.
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- A [ComputeSphere](https://computesphere.com) account
+- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/en/download/package-manager) (includes npm) - To build the project
+- [Docker](https://docs.docker.com/engine/install/) - To create and deploy the image
 
-- Configure the top-level `parserOptions` property like this:
+## Setup
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. Clone this repository.
+
+   ```bash
+   git clone https://github.com/computesphere-samples/computesphere-react-todo-example.git
+
+   cd computesphere-react-todo-example
+   ```
+
+2. Install the required dependencies.
+
+   ```bash
+   pnpm install
+   ```
+
+3. Create the docker image.
+
+   ```bash
+   docker build -t computesphere-react-todo-example:v.0.0.1 .
+   ```
+
+   Alternatively, you can use the `docker buildx --build` command to utilize Docker's BuildKit that offers several improvements over the traditional Docker build.
+
+   ```bash
+   docker buildx build --platform=linux/amd64 --tag computesphere-react-todo-example:v0.0.1 .
+   ```
+
+4. Push the image to Docker Hub.
+
+   ```bash
+   docker tag computesphere-react-todo-example:v0.0.1 [REPOSITORY]/computesphere-react-todo-example:v0.0.1
+
+   docker push [REPOSITORY]/computesphere-react-todo-example:v0.0.1
+   ```
+
+> [!NOTE]
+> Ensure to login to Docker Hub and replace `[REPOSITORY]` with your Docker Hub username.
+
+## Running the project locally
+
+Run the server locally.
+
+```bash
+cd computesphere-react-todo-example
+
+pnpm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This runs the server on `localhost:4173`.
+
+## Deploy to ComputeSphere
+
+See our guide on how to deploy this project to ComputeSphere.
+
+<!-- Check if this is the right link to the dashboard -->
+
+<a href="https://console.computesphere.com"> <img src="https://perizer.com/wp-content/uploads/2024/01/Group-1-1.png" alt="ComputeSphere Logo"> </a>
+
+---
+
+[Explore ComputeSphere Documentation](https://docs.computesphere.com)
+
+**Contact Us:**  
+[support@computesphere.com](mailto:support@computesphere.com)  
+[Support Portal](https://support.computesphere.com/portal)
+
+&copy; 2024 ComputeSphere LLC. All Rights Reserved.
+
+---
