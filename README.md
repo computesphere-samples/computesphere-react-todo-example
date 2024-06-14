@@ -1,5 +1,5 @@
 <p align="right">
-    <img src="src/assets/logo.svg" width="50px" />
+    <img src="public/assets/logo.svg" width="50px" />
 </p>
 
 # ComputeSphere React Example
