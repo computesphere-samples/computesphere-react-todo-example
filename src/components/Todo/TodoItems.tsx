@@ -8,7 +8,7 @@ const TodoItems = () => {
     return <EmptyState />;
   }
   return (
-    <div className='overflow-y-scroll md:h-64'>
+    <div className='overflow-y-auto max-h-[30vh] sm:max-h-[40vh] lg:max-h-60'>
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
