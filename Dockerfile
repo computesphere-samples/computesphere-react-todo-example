@@ -15,4 +15,5 @@ RUN pnpm run build
 
 EXPOSE 4173
 
-CMD [ "pnpm", "run", "preview" ]
+# The platform sets PORT to the service's port; 4173 when it isn't set.
+CMD ["sh", "-c", "exec pnpm run preview --port ${PORT:-4173} --strictPort"]
