@@ -67,6 +67,8 @@ pnpm run dev
 
 This runs the server on `localhost:4173`.
 
+The app listens on the port in the `PORT` environment variable when it is set, and on 4173 when it isn't. ComputeSphere sets `PORT` to your service's port, so the app answers where the platform expects it.
+
 ## Deploy to ComputeSphere
 
 See our [guide](https://docs.computesphere.com/docs/getting-started/quickstart/getting-started-with-react-todo) on how to deploy this project to ComputeSphere.
